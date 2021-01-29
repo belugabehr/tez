@@ -21,11 +21,11 @@ package org.apache.tez.dag.records;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import java.util.Objects;
 
 import org.apache.hadoop.classification.InterfaceAudience;
 import org.apache.hadoop.classification.InterfaceStability;
 
-import org.apache.tez.common.Preconditions;
 import org.apache.tez.util.FastNumberFormat;
 
 /**
@@ -58,9 +58,10 @@ public class TezTaskID extends TezID {
    * Constructs a TezTaskID object from given {@link TezVertexID}.
    * @param vertexID the vertexID object for this TezTaskID
    * @param id the tip number
+   * @throws NullPointerException if {@code vertexID} is {@code null}
    */
   public static TezTaskID getInstance(TezVertexID vertexID, int id) {
-    Preconditions.checkArgument(vertexID != null, "vertexID cannot be null");
+    Objects.requireNonNull(vertexID, "vertexID cannot be null");
     return tezTaskIDCache.getInstance(new TezTaskID(vertexID, id));
   }
 
@@ -71,7 +72,6 @@ public class TezTaskID extends TezID {
 
   private TezTaskID(TezVertexID vertexID, int id) {
     super(id);
-    Preconditions.checkArgument(vertexID != null, "vertexID cannot be null");
     this.vertexId = vertexID;
     this.serializingHash = getHashCode(true);
   }

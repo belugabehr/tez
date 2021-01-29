@@ -19,6 +19,7 @@
 package org.apache.tez.runtime.api.events;
 
 import java.nio.ByteBuffer;
+import java.util.Objects;
 
 import org.apache.hadoop.classification.InterfaceAudience.Private;
 import org.apache.hadoop.classification.InterfaceAudience.Public;
@@ -50,11 +51,17 @@ public class VertexManagerEvent extends Event {
    */
   private final ByteBuffer userPayload;
 
+  /**
+   * Constructor.
+   *
+   * @param vertexName
+   * @param userPayload
+   * @throws NullPointerException if {@code vertexName} or {@code userPayload}
+   *           is {@code null}
+   */
   private VertexManagerEvent(String vertexName, ByteBuffer userPayload) {
-    Preconditions.checkArgument(vertexName != null);
-    Preconditions.checkArgument(userPayload != null);
-    this.targetVertexName = vertexName;
-    this.userPayload = userPayload;
+    this.targetVertexName = Objects.requireNonNull(vertexName);
+    this.userPayload = Objects.requireNonNull(userPayload);
   }
 
   /**
