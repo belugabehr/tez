@@ -26,7 +26,6 @@ import java.util.Objects;
 import org.apache.hadoop.classification.InterfaceAudience;
 import org.apache.hadoop.classification.InterfaceStability;
 
-import org.apache.tez.common.Preconditions;
 import org.apache.tez.util.FastNumberFormat;
 
 /**

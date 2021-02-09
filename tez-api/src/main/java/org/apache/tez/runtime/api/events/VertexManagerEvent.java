@@ -28,8 +28,6 @@ import org.apache.tez.dag.api.VertexManagerPlugin;
 import org.apache.tez.runtime.api.Event;
 import org.apache.tez.runtime.api.TaskAttemptIdentifier;
 
-import org.apache.tez.common.Preconditions;
-
 /**
  * Event used to send information from a Task to the VertexManager for a vertex.
  * This may be used to send statistics like samples etc to the VertexManager for

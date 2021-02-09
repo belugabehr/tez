@@ -24,8 +24,10 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Objects;
 
+import com.google.common.annotations.VisibleForTesting;
 import org.apache.hadoop.classification.InterfaceAudience.Private;
 import org.apache.hadoop.classification.InterfaceAudience.Public;
+import org.apache.hadoop.io.DataOutputBuffer;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.Writable;
 
@@ -50,7 +52,7 @@ public abstract class EntityDescriptor<T extends EntityDescriptor<T>> implements
   }
 
   public EntityDescriptor(String className) {
-    this.className = Objects.requireNonNull(className);
+    this.className = className;
   }
 
   public UserPayload getUserPayload() {
