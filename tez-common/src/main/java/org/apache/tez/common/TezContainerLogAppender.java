@@ -54,7 +54,7 @@ public class TezContainerLogAppender extends FileAppender {
    */
   public void setLogFileName(String fileName) {
     Objects.requireNonNull(fileName);
-    Preconditions.checkArgument(fileName.contains(File.pathSeparator),
+    Preconditions.checkArgument(!fileName.contains(File.pathSeparator),
         "Invalid filename specified: " + fileName
             + " . FileName should not have a path component and should not be empty.");
     this.logFileName = fileName;
